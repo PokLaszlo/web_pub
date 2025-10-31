@@ -1,6 +1,6 @@
-Megvan TODO: Create művelet a /api/newdrink végponttal
+Megvan TODO: Create művelet a /api/newdrink végponttal 
 
-TODO: Update művelet a /api/updatedrink végponttal
+TODO: Update művelet a /api/updatedrink végponttal nincs befejezve
 Megvan TODO: Delete művelet a /api/deletedrink végponttal
 
 TODO: Típus komponens

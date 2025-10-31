@@ -11,22 +11,20 @@
                         <div>
                             Módosítás
                         </div>
-                        <div class="input mb-3">
-                            <label for="id" class="form-label">id</label>
-                            <input type="text" id="id" formControlName="id" class="form-control" readonly>
-                        </div>
                     }
                     @else {
                         Hozzáadás
-                    }</div>
+                    }
+                </div>
                 <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
             </div>
             <div class="modal-body">
                 <form [formGroup]="drinkForm" (ngSubmit)="save()" id="drinkForm">
-                    <!-- <div class="input mb-3">
+                    @if(!addMode){
+                    <div class="input mb-3">
                         <label for="id" class="form-label">id</label>
                         <input type="text" id="id" formControlName="id" class="form-control" readonly>
-                    </div> -->
+                    </div>}
                     <div class="input mb-3">
                         <label for="drink" class="form-label">Ital</label>
                         <input type="text" id="drink" formControlName="drink" class="form-control">
@@ -66,8 +64,12 @@
                 </form>
             </div>
             <div class="modal-footer">
-                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Bezár</button>
-                <button type="submit" class="btn btn-primary" form="drinkForm" data-bs-dismiss="modal">Hozzáad</button>
+                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal" (click)="setMode()">Bezár</button>
+                @if(!addMode){
+                    <button type="submit" class="btn btn-warning" form="drinkForm" data-bs-dismiss="modal" (click)="setMode()">Módosít</button>
+                }@else{
+                    <button type="submit" class="btn btn-primary" form="drinkForm" data-bs-dismiss="modal" (click)="setMode()">Hozzáad</button>
+                }
             </div>
         </div>
     </div>
@@ -96,7 +98,7 @@
                 <td>{{drink.price}}</td>
                 <td>{{drink.type}}</td>
                 <td>{{drink.package}}</td>
-                <td><button class="btn btn-warning me-2">Módosít</button></td>
+                <td><button class="btn btn-warning me-2" data-bs-toggle="modal" data-bs-target="#exampleModal" (click)="modify_load(drink)">Módosít</button></td>
                 <td><button class="btn btn-danger me-2" (click)="delete(drink.id)">Töröl</button></td>
             </tr>
         }
