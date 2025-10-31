@@ -80,4 +80,17 @@ export class DrinkComponent {
       error:(err:any)=>{console.error(err)}
     })
   }
+
+  modify_load(){
+
+  }
+  update(){}
+  delete(id:number){
+    this.api.deleteDrink$(id).subscribe({
+      next:(res)=>{
+        console.log(res)
+        this.getDrinks()
+      }
+    })
+  }
 }
