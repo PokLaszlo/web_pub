@@ -1,4 +1,5 @@
 Megvan TODO: Create művelet a /api/newdrink végponttal
+
 TODO: Update művelet a /api/updatedrink végponttal
 TODO: Delete művelet a /api/deletedrink végponttal
 
@@ -7,5 +8,5 @@ TODO: Típus CRUD műveletek
 TODO: Csomag komponencs
 TODO: Csomag CRUD műveletek
 
-TODO: A drink komponensben a típus legördülő listadobozból
-TODO: A drink komponensben a csomag legördülő listadobozból
+Megvan TODO: A drink komponensben a típus legördülő listadobozból
+Megvan TODO: A drink komponensben a csomag legördülő listadobozból
