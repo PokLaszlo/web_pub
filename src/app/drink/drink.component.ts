@@ -45,15 +45,15 @@ export class DrinkComponent {
   }
 
   setMode(){
+    this.drinkForm.reset();
     this.addMode=true;
   }
 
   save(){
     console.log("Mentés eljárás");
-    if(this.addMode){
+    if(this.addMode==true){
       this.create_drink();
-    }
-    else{
+    }else{
       this.update_drink();
     }
 
@@ -85,7 +85,7 @@ export class DrinkComponent {
   }
 
   modify_load(drink:any){
-    console.log(drink)
+    // console.log(drink)
     this.addMode=false;
     //akkor kell az alábbi, ha a backend nem egyezne meg a frontend mezőivel
     // this.drinkForm.patchValue({
@@ -102,8 +102,8 @@ export class DrinkComponent {
   create_drink(){
     this.api.createDrink$(this.drinkForm.value).subscribe({
       next: (res) =>{
-        console.log(res)
-        this.drinkForm.reset()
+        // console.log(res)
+        this.setMode()
         this.getDrinks()
       },
       error(err){console.log(err)}
@@ -111,8 +111,17 @@ export class DrinkComponent {
   }
 
   update_drink(){
-    console.log("Update árnyékeljárás");
-    this.addMode=true
+    console.log("Update eljárás");
+    // console.log(this.drinkForm.value);
+    this.api.updateDrink$(this.drinkForm.value).subscribe({
+      next: (res:any)=>{
+        console.log(res.data);
+        this.setMode()
+        this.getDrinks();
+      },
+      error: (err:any)=>{console.log(err)}
+    })
+
   }
   
   delete(id:number){

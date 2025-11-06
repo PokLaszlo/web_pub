@@ -1,6 +1,6 @@
 <h2>Italok</h2>
 
-<button type="button" class="btn btn-primary mb-2" data-bs-toggle="modal" data-bs-target="#exampleModal" >Hozzáadás</button>
+<button type="button" class="btn btn-primary mb-2 bi bi-gear-fill" data-bs-toggle="modal" data-bs-target="#exampleModal" ></button>
 
  <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
     <div class="modal-dialog">
@@ -16,7 +16,7 @@
                         Hozzáadás
                     }
                 </div>
-                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close" (click)="setMode()"></button>
             </div>
             <div class="modal-body">
                 <form [formGroup]="drinkForm" (ngSubmit)="save()" id="drinkForm">
@@ -66,9 +66,9 @@
             <div class="modal-footer">
                 <button type="button" class="btn btn-secondary" data-bs-dismiss="modal" (click)="setMode()">Bezár</button>
                 @if(!addMode){
-                    <button type="submit" class="btn btn-warning" form="drinkForm" data-bs-dismiss="modal" (click)="setMode()">Módosít</button>
+                    <button type="submit" class="btn btn-warning" form="drinkForm" data-bs-dismiss="modal" >Módosít</button>
                 }@else{
-                    <button type="submit" class="btn btn-primary" form="drinkForm" data-bs-dismiss="modal" (click)="setMode()">Hozzáad</button>
+                    <button type="submit" class="btn btn-primary" form="drinkForm" data-bs-dismiss="modal" >Hozzáad</button>
                 }
             </div>
         </div>
@@ -98,8 +98,8 @@
                 <td>{{drink.price}}</td>
                 <td>{{drink.type}}</td>
                 <td>{{drink.package}}</td>
-                <td><button class="btn btn-warning me-2" data-bs-toggle="modal" data-bs-target="#exampleModal" (click)="modify_load(drink)">Módosít</button></td>
-                <td><button class="btn btn-danger me-2" (click)="delete(drink.id)">Töröl</button></td>
+                <td><button class="btn btn-warning me-2 bi bi-pencil-fill" data-bs-toggle="modal" data-bs-target="#exampleModal" (click)="modify_load(drink)"></button></td>
+                <td><button class="btn btn-danger me-2 bi bi-trash-fill" (click)="delete(drink.id)"></button></td>
             </tr>
         }
     </tbody>
